@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safety Helmet Monitor - Camera</title>
+</head>
+<body>
+  <nav>
+    <a href="/">Camera</a> |
+    <a href="/dashboard">Dashboard</a>
+  </nav>
+
+  <h1>Safety Helmet Monitor</h1>
+  <section>
+    <p>Live camera preview. The page will grab a frame every N seconds and send it to the backend for prediction.</p>
+    <video id="video" width="640" height="360" autoplay playsinline></video>
+    <canvas id="canvas" width="640" height="360" hidden></canvas>
+    <div>
+      <label>Site: <input id="site" placeholder="e.g. Yard A"></label>
+      <label>Interval (seconds): <input id="interval" type="number" value="5" min="1"></label>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+    </div>
+    <div id="status">
+      <p>Last result: <span id="last-result">N/A</span></p>
+      <p>Confidence: <span id="last-confidence">N/A</span></p>
+      <p id="error" style="color: red;"></p>
+    </div>
+  </section>
+
+  <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+</body>
+</html>

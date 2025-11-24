@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Safety Helmet Monitor - Dashboard</title>
+</head>
+<body>
+  <nav>
+    <a href="/">Camera</a> |
+    <a href="/dashboard">Dashboard</a>
+  </nav>
+
+  <h1>Dashboard</h1>
+  <section>
+    <p>Aggregated stats from recent snapshots.</p>
+    <div>
+      <p>Total events (7d): <span id="total-events">0</span></p>
+      <p>No-helmet ratio: <span id="no-helmet-ratio">0</span></p>
+      <p>Average confidence: <span id="avg-confidence">0</span></p>
+    </div>
+
+    <h2>Trend (last 24h)</h2>
+    <pre id="trend"></pre>
+
+    <h2>Result Composition</h2>
+    <pre id="composition"></pre>
+
+    <h2>Recent Events</h2>
+    <table border="1" cellpadding="4">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Result</th>
+          <th>Confidence</th>
+          <th>Site</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody id="recent-events"></tbody>
+    </table>
+  </section>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
