@@ -18,7 +18,8 @@ def create_app():
         db.create_all()
 
     upload_dir = Path(app.root_path) / "uploads"
-    snapshot_service = SnapshotService(ModelService(), upload_dir)
+    weights_path = os.environ.get("MODEL_WEIGHTS")
+    snapshot_service = SnapshotService(ModelService(weights_path=weights_path), upload_dir)
 
     @app.route("/")
     def camera_page():
