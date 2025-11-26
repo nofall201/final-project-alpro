@@ -106,71 +106,30 @@
         }
     </style>
 </head>
-
 <body>
+  <nav>
+    <a href="/">Camera</a> |
+    <a href="/dashboard">Dashboard</a>
+  </nav>
 
-<nav class="navbar navbar-expand-lg mb-4">
-    <div class="container">
-        <a class="navbar-brand">Safety Helmet Monitor</a>
-        <div>
-            <a href="/" class="btn btn-light btn-sm me-2">Camera</a>
-            <a href="/dashboard" class="btn btn-outline-light btn-sm">Dashboard</a>
-        </div>
+  <h1>Safety Helmet Monitor</h1>
+  <section>
+    <p>Live camera preview. The page will grab a frame every N seconds and send it to the backend for prediction.</p>
+    <video id="video" width="640" height="360" autoplay playsinline></video>
+    <canvas id="canvas" width="640" height="360" hidden></canvas>
+    <div>
+      <label>Site: <input id="site" placeholder="e.g. Yard A"></label>
+      <label>Interval (seconds): <input id="interval" type="number" value="5" min="1"></label>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
     </div>
-</nav>
-
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-8">
-            <div class="card p-3">
-                <div class="card-header">Live Camera</div>
-                <div class="video-container">
-                    <img id="camera-feed" src="/video_feed" alt="Live Camera Stream">
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-
-            <div class="card p-3 mb-3">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <strong>Status</strong>
-                    <button id="activate-btn" class="btn btn-activate btn-sm">Activate</button>
-                </div>
-
-                <div class="status-box">
-                    <small class="text-muted">Last Result</small>
-                    <div id="last-result" class="result-text">-</div>
-                </div>
-
-                <div class="status-box">
-                    <small class="text-muted">Confidence</small>
-                    <div id="confidence" class="confidence-text">-</div>
-                </div>
-            </div>
-
-            <div class="card p-3">
-                <div class="card-header">Settings</div>
-
-                <div class="mb-3">
-                    <label class="text-muted mb-1">Send Frame Interval</label>
-                    <select id="interval-select" class="form-select">
-                        <option value="2">2 Seconds</option>
-                        <option value="5" selected>5 Seconds</option>
-                        <option value="10">10 Seconds</option>
-                    </select>
-                </div>
-
-                <button id="save-settings" class="btn btn-save w-100">Save</button>
-            </div>
-
-        </div>
-
+    <div id="status">
+      <p>Last result: <span id="last-result">N/A</span></p>
+      <p>Confidence: <span id="last-confidence">N/A</span></p>
+      <p id="error" style="color: red;"></p>
     </div>
-</div>
+  </section>
 
-<script src="{{ url_for('static', filename='js/camera.js') }}"></script>
-
+  <script src="{{ url_for('static', filename='js/camera.js') }}"></script>
 </body>
 </html>
