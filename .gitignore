@@ -1,0 +1,5 @@
+# virtual env
+backend_fastapi/venv_backend/
+frontend_fastapi/venv_frontend/
+.venv/
+__pycache__/
