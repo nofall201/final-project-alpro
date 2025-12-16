@@ -2,9 +2,9 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "python app.py"
-healthcheckPath = "/"
-restartPolicyType = "always"
+startCommand = "gunicorn app:app --bind 0.0.0.0:$PORT --workers 1"
+restartPolicyType = "on-failure"
+
 
 [env]
 PYTHON_VERSION = "3.11.9"
