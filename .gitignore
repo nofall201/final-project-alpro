@@ -1,9 +1,18 @@
-# virtual env
-backend_fastapi/venv_backend/
-frontend_fastapi/venv_frontend/
-.venv/
+# Byte-compiled / cache
 __pycache__/
+*.pyc
 
-uploads/
-instance/
+# Virtual environments
+.venv/
+env/
+venv/
+
+# SQLite database
 helmet_monitor.db
+
+# Uploads and logs
+uploads/
+*.log
+
+# OS artifacts
+.DS_Store
