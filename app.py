@@ -15,7 +15,10 @@ socketio = SocketIO(async_mode="threading")
 
 def create_app():
     app = Flask(__name__)
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///helmet_monitor.db"
+    db_url = os.environ.get("DATABASE_URL", "sqlite:///helmet_monitor.db")
+    if db_url.startswith("postgres://"):
+        db_url = db_url.replace("postgres://", "postgresql://", 1)
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
     db.init_app(app)
@@ -79,7 +82,9 @@ def create_app():
     return app
 
 
+app = create_app()
+
+
 if __name__ == "__main__":
-    app = create_app()
     port = int(os.environ.get("PORT", 8000))
     socketio.run(app, host="0.0.0.0", port=port, debug=True)
