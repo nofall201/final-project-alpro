@@ -1,7 +1,7 @@
-Flask==3.0.2
-Flask-SQLAlchemy==3.1.1
-Flask-SocketIO==5.3.6
-ultralytics==8.2.58
-Pillow==10.4.0
-numpy==1.26.4
-gunicorn==21.2.0
+Flask
+Flask-SQLAlchemy
+Flask-SocketIO
+ultralytics
+Pillow
+numpy
+gunicorn
